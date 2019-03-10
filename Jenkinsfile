@@ -7,24 +7,15 @@ node{
         sh "mvn clean install"
    }
    
-   stage('Sonar'){
-        try {
-            sh "mvn sonar:sonar"
-        } catch(error){
-            echo "The sonar server could not be reached ${error}"
-        }
-   }
-   
-   
-    stage('Build Docker Image'){
-     sh 'docker build -t rahulvaish/SpringBootJenkinsPipeline:2.0.0 .'
+   stage('Build Docker Image'){
+     sh 'docker build -t rahulvaish/springbootjenkinspipeline:2.0.0 .'
    }
    
     stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'MYDOCKERPASSWORD', variable: 'dockerHubPwd')]) {
         sh "docker login -u rahulvaish -p ${dockerHubPwd}"
      }
-     sh 'docker push rahulvaish/SpringBootJenkinsPipeline:2.0.0'
+     sh 'docker push rahulvaish/springbootjenkinspipeline:2.0.0'
    }
    
 }
