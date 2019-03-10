@@ -5,7 +5,6 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>SpringBootJenkinsPipeline</artifactId>
-	<name>SpringBootJenkinsPipeline</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
