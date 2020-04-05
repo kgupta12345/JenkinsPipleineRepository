@@ -2,12 +2,7 @@ pipeline{
  agent any
 
    stages{
-   
-      
-      stage('SCM Checkout'){
-    // Configured from Jenkins UI  
-   }
-   
+
    stage('Build') {
             steps{
             withMaven(maven : 'maven') {
