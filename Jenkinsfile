@@ -10,11 +10,15 @@ pipeline {
         }//stage#1 ends here
         stage('Docker Build'){
                 steps{
-                   script{
+                   
+                    script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
+                
                        //sh 'sudo setfacl --modify user:rahul:rw /var/run/docker.sock'
-                       sh 'sudo usermod -a -G docker $USER'
-                       sh 'docker build -t springbootjenkinspipeline .'
-                       sh 'docker tag  springbootjenkinspipeline rahulvaish/springbootjenkinspipeline'
+                       //sh 'sudo usermod -a -G docker $USER'
+                       //sh 'docker build -t springbootjenkinspipeline .'
+                       //sh 'docker tag  springbootjenkinspipeline rahulvaish/springbootjenkinspipeline'
                     }
                 }
         }//stage#2 ends here
