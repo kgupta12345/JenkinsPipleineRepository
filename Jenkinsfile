@@ -1,20 +1,28 @@
 pipeline {
  agent any
    stages{
-        stage('Build') {
+        stage('Maven Build') {
              steps{
                 withMaven(maven : 'maven') {
                    sh 'mvn clean -DskipTests=true install'
                 }
              }
         }//stage#1 ends here
-        stage('Docker build'){
+        stage('Docker Build'){
                 steps{
                    script{
-                       sh 'docker build -t rahulvaish/springbootjenkinspipeline:2.0.0 .'
+                       sh 'docker build -t springbootjenkinspipeline .'
+                       sh 'docker tag  springbootjenkinspipeline rahulvaish/springbootjenkinspipeline'
                     }
                 }
         }//stage#2 ends here
+        stage('Docker Tag & Push'){
+               steps{
+                  script{
+                      sh "echo '***********  ***********'"
+                   }
+               }
+        }//stage#3 ends here
    }//stages ends here
 }//pipeline ends here
 
