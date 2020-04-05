@@ -1,36 +1,22 @@
 pipeline {
  agent any
-
    stages{
-
-   stage('Build') {
-            steps{
-            withMaven(maven : 'maven') {
-            sh 'mvn clean -DskipTests=true install'
-            sh "ls -ltrh"
-            sh "mkdir -p dockerBuildDir"
-            sh "ls -ltrh"
-            }
-        }
-    }
-   
-   /*stage('Build Project') {
-    sh 'cd /var/lib/jenkins/workspace/firstmbpipeline_master'
-    sh "mvn clean install"
-   }
-   
-   stage('Build Docker Image'){
-     sh 'docker build -t rahulvaish/springbootjenkinspipeline:2.0.0 .'
-   }*/
-   
-    /*stage('Push Docker Image'){
-     withCredentials([string(credentialsId: 'MYDOCKERPASSWORD', variable: 'dockerHubPwd')]) {
-        sh "docker login -u rahulvaish -p ${dockerHubPwd}"
-     }
-     sh 'docker push rahulvaish/springbootjenkinspipeline:2.0.0'
-   }*/
-   }
-}
+        stage('Build') {
+             steps{
+                withMaven(maven : 'maven') {
+                   sh 'mvn clean -DskipTests=true install'
+                }
+             }
+        }//stage#1 ends here
+        stage('Docker build'){
+                steps{
+                   script{
+                       sh 'docker build -t rahulvaish/springbootjenkinspipeline:2.0.0 .'
+                    }
+                }
+        }//stage#2 ends here
+   }//stages ends here
+}//pipeline ends here
 
 
 
