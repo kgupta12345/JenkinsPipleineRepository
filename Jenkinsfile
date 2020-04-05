@@ -11,6 +11,7 @@ pipeline {
         stage('Docker Build'){
                 steps{
                    script{
+                       sh 'sudo setfacl --modify user:rahul:rw /var/run/docker.sock'
                        sh 'docker build -t springbootjenkinspipeline .'
                        sh 'docker tag  springbootjenkinspipeline rahulvaish/springbootjenkinspipeline'
                     }
