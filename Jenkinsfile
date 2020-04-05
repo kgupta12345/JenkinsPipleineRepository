@@ -2,7 +2,7 @@ node{
 
    
    stage('SCM Checkout'){
-      git credentialsId: 'd55a4d0d-94d8-4a65-9fd0-386668cf3dd1', url: 'https://github.com/kgupta12345/JenkinsPipleineRepository'
+      git branch: 'master',  git credentialsId: 'd55a4d0d-94d8-4a65-9fd0-386668cf3dd1', url: 'https://github.com/kgupta12345/JenkinsPipleineRepository'
    }
    
    stage('Build Project') {
