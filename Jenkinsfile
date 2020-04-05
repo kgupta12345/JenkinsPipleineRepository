@@ -1,7 +1,9 @@
 pipeline{
 
+   stages{
    
-   stage('SCM Checkout'){
+      
+      stage('SCM Checkout'){
     // Configured from Jenkins UI  
    }
    
@@ -31,7 +33,7 @@ pipeline{
      }
      sh 'docker push rahulvaish/springbootjenkinspipeline:2.0.0'
    }*/
-   
+   }
 }
 
 
