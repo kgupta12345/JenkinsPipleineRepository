@@ -12,9 +12,10 @@ pipeline {
                 steps{
                     script {
                         sh 'sudo groupadd docker'
-                         sh  sudo usermod -aG docker ${USER}
-                     su -s ${USER}
+                         sh  'sudo usermod -aG docker ${USER}'
+                    sh 'su -s ${USER}'
                        sh 'docker build -t springbootjenkinspipeline .'
+                     
                        //sh 'docker tag  springbootjenkinspipeline rahulvaish/springbootjenkinspipeline'
                     }
                 }
