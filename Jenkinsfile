@@ -1,5 +1,5 @@
 node{
-   def mvnHome = tool 'maven-3.6.3'
+
    
    stage('SCM Checkout'){
       git credentialsId: 'd55a4d0d-94d8-4a65-9fd0-386668cf3dd1', url: 'https://github.com/kgupta12345/JenkinsPipleineRepository'
