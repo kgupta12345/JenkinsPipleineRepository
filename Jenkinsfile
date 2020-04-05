@@ -1,11 +1,11 @@
-pipeline{
+pipeline {
  agent any
 
    stages{
 
    stage('Build') {
             steps{
-            withrahul(maven : 'maven') {
+            withMaven(maven : 'maven') {
             sh 'mvn clean -DskipTests=true install'
             sh "ls -ltrh"
             sh "mkdir -p dockerBuildDir"
